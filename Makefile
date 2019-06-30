@@ -2,7 +2,9 @@ ARTIFACT_OPERATOR=redis-operator
 ARTIFACT_INITCONTAINER=init-container
 
 # 0.0 shouldn't clobber any released builds
-PREFIX=redisoperator/
+SOURCEDIR="."
+PREFIX=registry.vimtura.net/docker/redis-operator/
+#PREFIX=redisoperator/
 #PREFIX = gcr.io/google_containers/
 
 SOURCES := $(shell find $(SOURCEDIR) ! -name "*_test.go" -name '*.go')
@@ -46,7 +48,7 @@ test:
 
 
 push-%: container-%
-	docker push $(PREFIX)$*:$(TAG)
+	@docker push $(PREFIX)$*:$(TAG)
 
 push: $(addprefix push-,$(CMDBINS))
 
