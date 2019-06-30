@@ -72,7 +72,7 @@ func (s *ServicesControl) CreateRedisClusterService(redisCluster *rapi.RedisClus
 			OwnerReferences: []metav1.OwnerReference{pod.BuildOwnerReference(redisCluster)},
 		},
 		Spec: kapiv1.ServiceSpec{
-			ClusterIP: "None",
+			//ClusterIP: "None",
 			Ports:     []kapiv1.ServicePort{{Port: 6379, Name: "redis"}},
 			Selector:  desiredlabels,
 		},
